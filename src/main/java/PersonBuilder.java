@@ -6,8 +6,8 @@ public class PersonBuilder {
     private String address;
 
     public PersonBuilder setName(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalStateException("Вы не ввели имя");
+        if (name == null && name.isEmpty()) {
+            throw new IllegalArgumentException("Вы не ввели имя");
         } else {
             this.name = name;
         }
@@ -15,8 +15,8 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setSurname(String surname) {
-        if (surname.isEmpty()) {
-            throw new IllegalStateException("Вы не ввели фамилию");
+        if (surname == null && surname.isEmpty()) {
+            throw new IllegalArgumentException("Вы не ввели фамилию");
         } else {
             this.surname = surname;
         }
@@ -24,8 +24,8 @@ public class PersonBuilder {
     }
 
     public PersonBuilder setAge(int age) {
-        if (age <= 0) {
-            throw new IllegalStateException("Некорректно введен возраст");
+        if (age < 0) {
+            throw new IllegalArgumentException("Некорректно введен возраст");
         } else {
             this.age = age;
         }
@@ -38,9 +38,15 @@ public class PersonBuilder {
     }
 
     public Person build() {
+        Person person;
         if (name == null || surname == null) {
             throw new IllegalStateException("Вы не ввели имя или фамилию");
         }
-        return new Person(name, surname, age, address);
+        if (age < 0) {
+            person = new Person(name, surname);
+        } else {
+            person = new Person(name, surname, age, address);
+        }
+        return person;
     }
 }

@@ -3,10 +3,10 @@ import java.util.OptionalInt;
 
 public class Person {
 
-    private final String name;
-    private final String surname;
-    private int age;
-    private String address;
+    protected final String name;
+    protected final String surname;
+    protected int age;
+    protected String address;
 
     public Person(String name, String surname) {
         this.name = name;
@@ -21,11 +21,11 @@ public class Person {
     }
 
     public boolean hasAge() {
-        return this.age >= 0;
+        return age >= 0;
     }
 
     public boolean hasAddress() {
-        return this.address != null;
+        return address != null;
     }
 
     public String getName() {

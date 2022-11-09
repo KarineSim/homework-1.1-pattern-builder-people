@@ -3,10 +3,10 @@ import java.util.OptionalInt;
 
 public class Person {
 
-    protected final String name;
-    protected final String surname;
-    protected int age;
-    protected String address;
+    private final String name;
+    private final String surname;
+    private int age;
+    private String address;
 
     public Person(String name, String surname) {
         this.name = name;
